@@ -1,0 +1,19 @@
+system_binary(
+    name="julia",
+    binary_name="julia",
+    fingerprint=r".*1.10.*",
+    fingerprint_args=["-v"],
+)
+
+adhoc_tool(
+    name="julia-tool",
+    runnable=":julia",
+    args=["-v"],
+)
+run_shell_command(
+    name="run-julia",
+    command="julia",
+    execution_dependencies=[
+        ":julia-tool",
+    ],
+)
